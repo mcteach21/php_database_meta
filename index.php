@@ -8,8 +8,7 @@
     require_once 'dao/dao.class.php';
 
     $tables = Meta::tables();
-    //print_r(MetaGenerator::$mapping);
-
+    // print_r(MetaGenerator::$mapping);
     if(isset($_POST['mapit'])){
 
         MetaGenerator::init();
@@ -19,32 +18,15 @@
             MetaGenerator::create_mapping_class($class, $table);
         }
 
-        //$dao = new Dao('continents');
-
-        /*require_once 'classes/continent.class.php';
-        $dao = new Dao('continents');
-
-        $item = $dao->get(100);
-        $item->name = 'Eurodisney!';
-        $dao->update($item);
-
-        $item = $dao->get(200);
-        $dao->delete($item);*/
-
-
-/*        echo '<hr/>';
-
-        $items  = $dao->all();
-        foreach ($items as $item){
-            print_r($item);
-            echo '<br/>';
-        }
-        echo '<hr/>';*/
     }
     $log='';
 
+/*    $dao = new Dao('countrylanguage');
+    $items =  $dao->all();
+    print_r($items);*/
 
-    $directory =  str_replace('index.php','', $_SERVER['SCRIPT_FILENAME']).'\classes\\';
+
+ /*   $directory =  str_replace('index.php','', $_SERVER['SCRIPT_FILENAME']).'\classes\\';
     $directory_files = array_diff(scandir($directory), array('..', '.'));
     echo '<div style="color:white">';
         print_r($directory_files);
@@ -58,14 +40,7 @@
             echo $file.' ==> '.$matches[1];
             echo '<hr/>';
         }
-    echo '</div>';
-
-    /*    echo 'Guest : '.MetaGenerator::mapped_table('Guest').'<br/>';
-    echo 'Vip : '.MetaGenerator::mapped_table('Vip').'<br/>';
-    if (!mysqli_connect()) {
-        showerror();
-    }*/
-
+    echo '</div>';*/
 
 ?>
 <!doctype html>
@@ -120,7 +95,7 @@
                                 <td class="expand-button"></td>
                                 <td><?= ucfirst($table['TABLE_NAME']) ?></td>
                                 <td><?= $table['TABLE_ROWS'] ?></td>
-                                <td><?= strtoupper(MetaGenerator::mapped_class($table['TABLE_NAME'])) ?></td>
+                                <td><?= MetaGenerator::mapped_class($table['TABLE_NAME']) ?></td>
                             </tr>
                                 <tr class="hide-table-padding">
                                     <td></td>

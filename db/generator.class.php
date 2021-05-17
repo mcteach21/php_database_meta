@@ -34,7 +34,6 @@ class MetaGenerator
         $columns_names=[];
         foreach ($columns as $column){
             $content .='   private $'.strtolower($column['COLUMN_NAME']).';'.PHP_EOL;
-
             array_push( $columns_names, strtolower($column['COLUMN_NAME']));
         }
         $content_construct ='   public function __construct($'.implode(', $',$columns_names).'){'.PHP_EOL;
@@ -73,12 +72,22 @@ class $class_name {
     }
 
     public static function mapped_class($table){
-
-       if (!isset(self::$mapping[$table])){
+        if (!isset(self::$mapping[$table])){
             return null;
-       }
-       return self::$mapping[$table];
+        }
+        return self::$mapping[$table];
     }
+
+    public static function annotated_table($class_name){
+        require_once 'classes/'.strtolower($class_name).'.class.php';
+
+        $section = new ReflectionClass($class_name);
+        preg_match("/@table\((.*?)\)/", $section, $matches);
+
+        $table =  $matches[1];
+        return $table;
+    }
+
     public static function mapped_table($class){
         $table = ''; //strtolower($class);
 

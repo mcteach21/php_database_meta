@@ -22,6 +22,8 @@ require_once 'db/generator.class.php';
         $this->table = $table;
         $this->mapped_class = MetaGenerator::mapped_class($table);
 
+        echo '<hr/>'.$this->mapped_class.'<hr/>';
+
         $this->columns = Meta::columns($table);
         $this->columns_names = Meta::columns_names($table);
     }
@@ -30,6 +32,9 @@ require_once 'db/generator.class.php';
     {
         $items = array();
         $table_items = $this->pdo->query('SELECT * FROM '.$this->table)->fetchAll(PDO::FETCH_ASSOC);
+
+        //print_r($table_items);
+
         foreach ($table_items as $table_item){
             $item=$this->map_table_item($table_item);
             array_push($items, $item);
@@ -86,6 +91,7 @@ require_once 'db/generator.class.php';
 
     private function map_table_item($table_item){
         $args =[];
+        print_r($table_item);
         foreach ($this->columns_names as $column_name)
             array_push($args, $table_item[$column_name]);
 

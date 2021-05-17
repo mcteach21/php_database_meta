@@ -42,7 +42,7 @@ class Meta {
         $columns = self::columns($table);
         $columns_names=[];
         foreach ($columns as $column){
-            array_push( $columns_names, strtolower($column['COLUMN_NAME']));
+            array_push( $columns_names, $column['COLUMN_NAME']);
         }
         return $columns_names;
     }
