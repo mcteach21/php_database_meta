@@ -1,0 +1,47 @@
+body{
+    background: #263238;
+    padding: 10px;
+}
+td, th{
+    color: whitesmoke;
+    border: aliceblue !important;
+}
+.table td, .table th {
+    padding: .45rem;
+}
+.container{
+    padding: 20px;
+    max-width: 60%;
+    margin: auto;
+    border: antiquewhite 1px solid;
+}
+.mapping{
+
+}
+button, input {
+    margin-bottom : 5px;
+    width: 100%;
+}
+
+tr.hide-table-padding td {
+    padding: 0;
+}
+.details-table td{
+    padding: 0.25rem !important;
+}
+.expand-button {
+    position: relative;
+}
+
+.accordion-toggle .expand-button:after
+{
+    position: absolute;
+    left:.75rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    content: '-';
+}
+.accordion-toggle.collapsed .expand-button:after
+{
+    content: '+';
+}
